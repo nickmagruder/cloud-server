@@ -12,7 +12,9 @@ const validator = require('./middleware/validator.js');
 
 app.use(express.json());
 
-/* function personHandler(req, res, next) { */
+app.get('/', (req, res) => {
+  res.status(200).send('Welcome to the internet. ¯\_( ͡❛ ͜ʖ ͡❛)_/¯');
+});
 
 app.get('/person', logger, validator, (req, res, next) => {
     let resObject = {
@@ -24,12 +26,6 @@ app.get('/person', logger, validator, (req, res, next) => {
 app.use(errorHandler404);
 app.use(errorHandler500);
 
-
-/* start(port => {
-  app.listen(port, () => {
-    console.log('App is running on port :: ' + port);
-  });
-}); */
 
 function start(port) {
   app.listen(port, () => console.log('App is running on port :: ' + port));
